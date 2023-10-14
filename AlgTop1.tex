@@ -1,12 +1,113 @@
 \documentclass[10pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\title{Alegbraic Topology I}
+\usepackage{preamble}
+\title{Algebraic Topology I\\[0.2em]\smaller{}Based on the lecture course by Marcus Hausmann, Bonn 2023}
 \author{Mathieu Wydra}
 \date{}
 \begin{document}
-\section{1}
-a
+\maketitle
+\section{Spectral Sequences}
+\begin{defn}
+A \textbf{homologically} or \textbf{Serre-graded spectral sequence} is a triple $(E^\bullet,d^\bullet,h^\bullet)$ such that
+\begin{itemize}
+\item $(E^r)_{r\geq 2}$ is a sequence of $\Z$-bi-graded abelian groups 
+$E^r = \bigoplus_{p,q\in \Z^2} E_{p,q}^r$, where $E^r$ is called the \textbf{page} of the spectral sequence.
+\item $(d^r:E^r\to E^r)_{r\geq 2}$ is a sequence of morphism of bi-degree $(-r,r-1)$ satisfying $d^r\cdot d^r = 0$.
+\item $(h^r:H_*(E^r,d^r)\to E^{r+1})_{r\geq 2}$ is a sequence of bi-grading preserving isomorphism.
+\end{itemize}
+\end{defn}
+
+\begin{defn}
+We say that a spectral sequence is \textbf{first quadrant} if for $p<0$ or $q<0$ we have $E^2_{p,q}=0$.
+\end{defn}
+
+\begin{lemma}
+For a first quadrant spectral sequence we have $\forall r\geq 0$ and whenever $p<0$ or $q<0$, $E^r_{p,q} = 0$. Moreover, for a given $p,q$ the map $h$ induces an isomorphism $E^r_{p,q} \xrightarrow{\sim} E^{r+1}_{p,q}$ for all $r>r_0=\max(p,q+1)$.
+\end{lemma}
+
+\begin{defn}
+For a first quadrant spectral sequence $(E^\bullet,d^\bullet,h^\bullet)$ we define the $E^\infty$-page as the bi-graded abelian group $E^\infty_{p,q} = E^{r_0+1}_{p,q}$ with $r_0 =\max(p,q+1)$. By lemma 1.1, $E^\infty_{p,q} \cong E^{r}_{p,q}$.
+\end{defn}
+
+By a filtered object in an abelian Category $\mathcal{A}$ we mean an object $H\in \mathcal{A}$ with a sequence of inclusions $0 =F^{-1}\subset F^0 \subset F^1 \subset \ldots\subset F^n\subset \ldots \subset H$.
+
+\begin{defn}
+A first quadrant spectral sequence $(E^\bullet,d^\bullet,h^\bullet)$ is said to \textbf{converge} to a filtered object in a graded abelian group $(H,F)$ if there is a chosen isomorphism $E^\infty_{p,q} \cong F^p_{p+q}/F^{p-1}_{p+q}$, $\forall p,q$ and $F^p_n = H_n$ if $n\geq p$.\\
+In this case we write $E^2_{p,q} \implies H$.
+\end{defn}
+
+\begin{remark}
+\begin{itemize}
+\item Convergence is really just a datum of the isomorphism $E^\infty_{p,q} \cong F^p_{p+q}/F^{p-1}_{p+q}$
+\item Convergence spectral sequences are often simply encoded as $E^2_{p,q} \implies H$, however this suppresses not only this data but also the higher numbered pages, differentials, and the filtration on H.
+\end{itemize}
+\end{remark}
+
+We now introduce the Serre spectral sequence for the homology of fibre sequences.
+
+\begin{defn}
+Let $f:Y\to X$ be a continuous map of topological spaces and $x\in X$. The homotopy fibre $hofib_x(f)$ of $f$ at $x$ is defined to be the space $hofib_x(f) = P_x X\times_X Y$ where $P_x X = \{\gamma:[0,1]\to X\mid \gamma(1) = x\}$.
+\end{defn}
+
+Indeed
+
+\[\begin{tikzcd}
+hofib_x(f)\arrow{r}\arrow{d} & P_x X\arrow{d}{ev_0} \\
+Y \arrow{r}{f} & X
+\end{tikzcd}\]
+In other words, $hofib_x(f)$ is the space of pairs $(\gamma,y)$ where $y\in Y$ and $\gamma$ is a path from $f(y)$ to x.
+\begin{remark}
+Note that $P_x X$ is contractible by the homotopy $H:P_xX\times [0,1]\to P_xX$, $(\gamma,y)\mapsto (s\mapsto \gamma((1-t)s + t))$
+\end{remark}
+
+\begin{example}
+Take $f:*\to X$ then $hofib_x(f) = \Omega_x X$.
+\end{example}
+
+\begin{defn}
+A \textbf{fibre sequence of topological spaces} is a sequence $F\xrightarrow{\iota} Y \xrightarrow{X}$, a base-point $x\in X$, a homotopy $h:F\to X^{[0,1]}$ from the composite $f\circ \iota$ to the constant map $C_X:F\to X$ and such that the induced map $F\to hofib_x(f)$, $z\mapsto(h(z),c(z))$.
+\end{defn}
+
+\begin{remark}
+Recall that weak homotopy equivalence = isomorphism on $\pi_n(_, *)$ for all $n$, $*$.
+\end{remark}
+
+\begin{example}
+\begin{enumerate}
+\item Let $f:Y\to X$ be any continuous map $x\in X$. Then the pair $hofib_x(f)\xrightarrow{\iota} Y \xrightarrow{f} X,h)$ is a fibre sequence since by the construction the map $hofib_x(f)\to hofib_x(f)$ is the identity map.\\ Every fibre sequence is equivalent to this example int he following sense: given $F\xrightarrow{\iota} Y \xrightarrow{X}$, there is a commutative diagram
+
+\[\begin{tikzcd}
+F \arrow{r}{\sim} \arrow{d}& hofib_x(f)\arrow{d}\\
+Y \arrow{r}\arrow{d}{f} & Y\arrow{d}{f}\\
+X \arrow{r} & X
+\end{tikzcd}\] an equivalence of fibre sequences.\\
+In particular $\Omega X\to *\to X$ is a fibre sequence where $h:\Omega X\times [0,1]\to X$ is the eval map.\\
+Note that if one instead chooses $h$ to be the constant homotopy, one does not obtain a fibre sequence (unless $X$ is contractible). This is because the induced map $\Omega X \to hofib_x(f) = \Omega X$ is the constant map, which is not a weak homotopy equivalence. Hence, the choice of homotopy is important.
+
+\item For every pair of spaces $F$ and $X$, $x\in X$ the pair ($F\to F\times X\xrightarrow{pr_x} X$, $h$=const) is a fibre sequence, called the trivial fibre space. To see this, note that $hofib_x(pr_x)=F\times P_xX$, with induced map $F\to F\times P_x X$, $y\mapsto (y,const)$, which is a homotopy equivalence as $P_xX$ is contractible.
+
+\item Let $p:E\to B$ be a fibre bundle with fibre $F=p^{-1}$ for some $b\in B$. Then the sequence $F\to E\xrightarrow{p} B$ with constant homotopy is a fibre sequence. This is a special case of example 4.
+
+\item The map $p:E\to B$ is a Serre fibration if every commutative diagram of the form 
+
+\[\begin{tikzcd}
+D^n\times 0 \arrow{r}\arrow{d} & E \arrow{d}{p}\\
+D^n\times[0,1]\arrow[ur, dotted]{g}\arrow{r}& B
+\end{tikzcd}\]
+there exists a lift $g$ making both triangles commute.\\
+Given a Serre fibration $p:E\to B$, $b\in B$ the sequence $F = p^{-1}(b) \to E\to B$ with the constant homotopy is a fibre sequence. (Proof as exercise).\\
+Note that every fibre sequence is also equivalent to one of this form.
+
+\item As a special case of example 3, the Hopf fibration is a fibre bundle $S^1\to S^3\xrightarrow{\eta} S^2$ works by letting $S^1 = U(1)$ act on $S^3 \subset \C^2$ by $\lambda(z_1,z_2) = (\lambda z_1, \lambda z_2)$ with quotient $S^2\cong \C P^1$.
+
+\item Example 5 generalises to fibre bundles $S^1\to S^{2n+1}\to \C P^n$ with limit case
+\[\begin{tikzcd}
+S^1 \arrow{r}\arrow{d}{\cong} & S^\infty \arrow{r} \arrow{d}& \C P^\infty \arrow{d}{\cong}\\
+\Omega \C P^1\arrow{r}& *\arrow{r} &\C P^\infty
+\end{tikzcd}\]
+\end{enumerate}
+\end{example}
+
+
+
+
 \end{document}
