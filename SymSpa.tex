@@ -1,0 +1,31 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{preamble}
+
+\title{Symmetric Spaces}
+\date{}
+
+\begin{document}
+\maketitle	
+\section{1}
+\begin{defn}
+A \textbf{Riemann symmetric space} is a Riemannian manifold $(M,g)$ such that $\forall p\in M$ there exists a isometry $s_p: M\to M$ satisfying $s_p(p)$ and $ds_p\vert_p = -\text{id}$.
+\end{defn}
+
+\begin{remark}
+A Riemannian manifold $M$ does not have isometries in general.
+\end{remark}
+
+A few examples:
+
+\begin{example}
+\begin{itemize}
+\item On $\R^n$, $s_p(p+v) = p-v$.
+\item $S^n\subset \R^n$ given w.l.o.g at $p=(0,0,\ldots,0,1)$ as $s_p(x_1,\ldots,x_{n+1}) = (-x_1,\ldots,-x_n,x_{n+1})$.
+\item $\Hy^n$ as the Poincare disc model $(\D^n,g_\text{hyp})$ by $s_0(v) = -v$.
+\end{itemize}
+\end{example}
+
+\begin{defn}
+A Riemannian manifold $(M,g)$ is called a \textbf{locally symmetric space} if $\forall p\in M$ there exists a neighbourhood of $p$, $p\in \U_p$ and an isometry $s_p:\U_p\to \U_p$ of $(\U_p,g\vert_{U_p})$ such that $ds_p\vert_p = -id$.
+\end{defn}
+\end{document}

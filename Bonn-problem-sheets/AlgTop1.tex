@@ -1,0 +1,57 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{preamble}
+
+\title{Algebraic Topology I P.S. 1}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item 1
+\item \begin{enumerate}\item
+
+From the two short exact sequences induced from the inclusion of complexes, we get two long exact sequences. Define $f$ to be $f = q_*\circ \partial$ in the diagram below, where $H_n(C_1)$ are identified with each other. Also define $g$ to be equal to $\partial$ as below.\\
+Since the rows are exact, $\ker g = \text{im }q_*$ and since $\text{im } f\subset \text{im } q_* = \ker g$, this implies that $g\circ f = 0$.
+\[\begin{tikzcd}
+	\ldots & {H_{n+1}(C_1)} & {H_{n+1}(C)} & {H_{n+1}(C/C_1)} & {H_n(C_1)} & \ldots \\
+	\\
+	\ldots & {H_n(C_0)} & {H_n(C_1)} & {H_n(C_1/C_0)} & {H_{n-1}(C_0)} & \ldots
+	\arrow["\partial", from=1-1, to=1-2]
+	\arrow["g", from=3-1, to=3-2]
+	\arrow["{i_*}", from=1-2, to=1-3]
+	\arrow["{q_*}", from=1-3, to=1-4]
+	\arrow["\partial", from=1-4, to=1-5]
+	\arrow["{i_*}", from=1-5, to=1-6]
+	\arrow["{i_*}", from=3-2, to=3-3]
+	\arrow["{q_*}", from=3-3, to=3-4]
+	\arrow["g", from=3-4, to=3-5]
+	\arrow["{i_*}", from=3-5, to=3-6]
+	\arrow["f"{description}, from=1-4, to=3-4]
+	\arrow[curve={height=12pt}, dashed, tail reversed, from=1-5, to=3-3]
+\end{tikzcd}\]
+\item We define $d:\ker f\to\text{coker }g$ as follows: take $x\in \ker f$, then by definition $f(x) = q_*\circ \partial(x) = 0\in H_n(C_1/C_0)$. By $\ker q_* = \text{im } i_*$, there exists a $y\in H_n(C_0)$ such that $i_*(y) = \partial(x)$ then $y\mapsto y\text{ im }g\in \text{coker }g$. This gives us $d$.
+
+\[\begin{tikzcd}
+	&&& {\ker f} \\
+	\ldots & {H_{n+1}(C_1)} & {H_{n+1}(C)} & {H_{n+1}(C/C_1)} & {H_n(C_1)} & \ldots \\
+	\\
+	\ldots & {H_n(C_0)} & {H_n(C_1)} & {H_n(C_1/C_0)} & {H_{n-1}(C_0)} & \ldots \\
+	& {\text{coker } g}
+	\arrow["\partial", from=2-1, to=2-2]
+	\arrow["g", from=4-1, to=4-2]
+	\arrow["{i_*}", from=2-2, to=2-3]
+	\arrow["{q_*}", from=2-3, to=2-4]
+	\arrow["\partial", from=2-4, to=2-5]
+	\arrow["{i_*}", from=2-5, to=2-6]
+	\arrow["{i_*}", from=4-2, to=4-3]
+	\arrow["{q_*}", from=4-3, to=4-4]
+	\arrow["g", from=4-4, to=4-5]
+	\arrow["{i_*}", from=4-5, to=4-6]
+	\arrow["f"{description}, from=2-4, to=4-4]
+	\arrow[curve={height=12pt}, dashed, tail reversed, from=2-5, to=4-3]
+	\arrow[hook, from=1-4, to=2-4]
+	\arrow[two heads, from=4-2, to=5-2]
+	\arrow["d"{description}, from=1-4, to=5-2]
+\end{tikzcd}\]
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
