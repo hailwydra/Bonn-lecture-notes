@@ -1,0 +1,17 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{preamble}
+\begin{document}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item \begin{enumerate}
+\item Consider the category of sheaves on abelian groups $C = \text{Sh}_\text{ab}(X)$. $C$ is obviously a preadditive category, since the composition of homomorphism $\mathcal{F}(U)\to \mathcal{G}(U)$, $\mathcal{G}(U)\to \mathcal{H}(U)$ for each $U\subset X$ has the structure of an abelian group, then so does Hom($A,B$). $\underline{0}$, the constant sheaf with value at 0 is both a final and initial object in $C$. Given sheaves $\mathcal{F}, \mathcal{G}$ we can define the direct sum as $\mathcal{F}\oplus\mathcal{G}= \mathcal{F}\times\mathcal{G}$ with obvious projection and embedding morphisms, hence $C$ is additive as well. Given some morphism of sheaves in $C$, $f:\mathcal{F}\to \mathcal{G}$ define subsheaf Ker($f$) as
+\[\text{Ker}(f)(U) = \{s\in \mathcal{F}\mid f(s)=0\in \mathcal{G}(U)\}\] which is a kernel in $C$. Similarly, consider the pre-sheaf on abelian groups $\mathcal{H}(f)$ by $\mathcal{H}(U) = \mathcal{G}(U)/f(\mathcal{F}(U))$, sheafify to Coker$(f)$ := $\overline{\mathcal{H}}$. Since for $p\in X$, Coker$(f)_p$ = Coker$(f_p)$ then the map $\mathcal{G}\to \text{Coker}(f)$ is an epimorphism and if $g:\mathcal{G}\to \mathcal{K}$ is a $C$-morphism such that $g\circ f$ vanishes then $g$ induces a morphism between $\mathcal{G}(U)/f(\mathcal{F}(U))$ to $\mathcal{K}(U)$ for all $U\subset X$ open. By universal property we get $\text{Coker}(f)\to \mathcal{K}$ which is then unique by surjectivity above. Hence it is a coker.\\
+
+Since $C$ is an abelian category, all limits and colimits exist in general.
+\item Let $f:\mathcal{F}\to \mathcal{G}$ be a morphism of sheaves on abelian groups. \\
+Assume first that $f_p:\mathcal{F}_p\to \mathcal{G}_p$ is surjective for all $p\in X$, then if $g_1,g_2:\mathcal{G}\rightrightarrows\mathcal{H}$ (where $H$ is another sheaf) such that $g_1\circ f = g_2\circ f$, this also becomes equal on stalks. Since $f_p$ is surjective, it is an epimorphism in \textbf{Ab} thus $(g_1)_p = (g_2)_p$ and since the maps are equal on stalks they are equal on the sheaf so $g_1=g_2$.\\
+Conversely, assume $f$ is an epimorphism and pick $p\in X$. Define a sheaf $\mathcal{H}$ as follows: if $p\in U \subset X$, then $\mathcal{H}(U) = \text{coker}(f_p)$, and $\mathcal{H}(U)$ vanishes when $x\not\in U$. Restriction maps are either the identity if both sets contain $p$ and the zero map otherwise. Then define $g:\mathcal{G}\to \mathcal{H}$, sending $\mathcal{G}(U)$ to $\mathcal{H}(U)$ by $s\mapsto [s]$ if $x\in U$ and $s\mapsto 0$ otherwise. Further define $g_1,g_2:\mathcal{G}\rightrightarrows \mathcal{H}\oplus\mathcal{H}$ as $g_1 = (g,0)$, $g_2 = (0,g)$. Now if $f_p:\mathcal{F}_p\to \mathcal{G}_p$ is not surjective then $\mathcal{H}$ is non-trivial so $g_1\neq g_2$. However $g_1\circ f = g_2\circ f$ so this can not be the case. Hence $f_p$ must be surjective.
+\item Define $\mathcal{F}:= i_{-,*}\underline{\Z}\oplus i_{+,*}\underline{\Z}$, $\mathcal{G}:=i_*\underline{\Z}$
+\end{enumerate}
+\end{enumerate}
+\end{document}

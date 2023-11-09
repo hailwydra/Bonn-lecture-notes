@@ -1,0 +1,71 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{preamble}
+
+\title{Problem Sheet 3}
+\author{Mathieu Wydra}
+\date{}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item Let $F\to Y\to X$ be a fibre sequence with $F = \R P^\infty = K(\Z_2,1)$ and $X = \C P^\infty = K(\Z,2)$. First we can note that $[K(\Z,2),K(\Z_2,2)]\cong H^2(K(\Z,2),\Z_2)\cong Z_2$ by the Universal coefficient theorem and $H^2(\C P^\infty) = \Z$. Hence there are two maps $X\to K(\Z_2,2)$ up to homotopy determine by multiplication on $H^2$ or $H_2$ by an element of $\Z_2$ which we call $f_0,f_1$. Consider then the homotopy fibres of $f_0,f_1$ denoted $F_0,F_1$.\\
+
+By application of Hurewicz we find the first few homology groups for $K(\Z_2,1)$ and $K(\Z,2)$. 
+\begin{align*}
+&H_0(K(\Z_2,1),\Z)=\Z\\
+\pi_1(K(\Z_2,1))\cong &H_1(K(\Z_2,1),\Z)\cong \Z_2\\
+0=\pi_2(K(\Z_2,1))\twoheadrightarrow &H_2(K(\Z_2,1),\Z) = 0\\
+&H_0(K(\Z,2),\Z)=\Z\\
+\pi_2(K(\Z,2))\cong &H_2(K(\Z,2),\Z)\cong \Z\\
+0=\pi_3(K(\Z,2))\twoheadrightarrow &H_3(K(\Z,2),\Z) = 0\\
+\end{align*}
+Then by Universal coefficient theorem, the first few cohomology groups are $H^*(K(\Z_2,1)) = \Z,\Z_2,0$ and $H^*(K(\Z_2,1)) = \Z,0,\Z,0$. This gives us $E_2$-page.
+\begin{sseqdata}[name = one, cohomological Serre grading, classes = {draw = none}, no y ticks, no x ticks, y axis gap = 1cm, right clip padding = 1cm]
+\class["\Z"](0,0)
+\class["\Z"](2,0)
+\class["\Z_2"](0,1)
+\class["\Z_2"](2,1)
+\foreach \x in {1,3} \foreach \y in {0,1,2} {\class["0"](\x,\y)}
+\class["0"](0,2)
+\class["0"](2,2)
+\end{sseqdata}
+\printpage[name=one, page=2]
+
+\item Consider map $F:S^k\to S^k$ of degree $n$, $b\in S^k$. Call the homotopy fibre $\text{hofib}_b(f)$ of $f$ at $b$, $F$. 
+The fibre sequence $F\to S^k\xrightarrow{f} S^k$ induces a long exact sequence, \[\ldots\to \pi_{n+1}(S^k)\to \pi_n(F)\to \pi_n(S^k)\to \pi_n(S^k)\to \ldots.\]
+$\pi_n(S^k)$ vanishes for $n\leq k-1$ so we have 
+\begin{align*}
+\ldots\to\pi_{k+1}(S^k)\to\pi_k(F)\to\pi_k(S^k)\xrightarrow{f_*}\pi_k(S^k)\to &\pi_{k-1}(F)\to \pi_{k-1}(S^k)\to \ldots \\
+\ldots	\to\Z\xrightarrow{\times n}\Z\to&\pi_{k-1}(F)\to 0\to\ldots
+\end{align*}
+(The induced map on homotopy groups is by the Hurewicz map on $S^k$). As this is an exact sequence, $\pi_{k-1}(F) = \Z/n\Z = \Z_n$ and $\pi_n(F) = 0$ for $n<k-1$. Thus $F$ is $k-2$-connected so by Hurewicz $H_{k-1}(F) = \Z_n$, $H_j(F) = 0$ for $j\leq k-2$. By UCT $H^j(F)=0$ for $1\leq j\leq k-1$
+
+
+The $E_2$-page of the cohomological Serre spectral sequence is 
+
+\begin{sseqdata}[name = two, cohomological Serre grading, classes = {draw = none}, no y ticks, no x ticks, y axis gap = 1cm, right clip padding = 1cm]
+\class["H^0(F)"](0,0)
+\class["H^1(F)"](0,1)
+\class["H^{k-1}(F)"](0,3)
+\class["H^{k}(F)"](0,4)
+
+\foreach \x in {1,3,5} \foreach \y in {0,1,3,4} {\class["0"](\x,\y)}
+\foreach \y in {0,1,3,4} {\class["\ldots "](2,\y)}
+\foreach \x in {0,2,4} {\class["\vdots "](\x ,2)}
+
+\class["H^0(F)"](4,0)
+\class["H^1(F)"](4,1)
+\class["H^{k-1}(F)"](4,3)
+\class["H^{k}(F)"](4,4)
+
+\d4(0,3)
+\d4(0,4)
+\end{sseqdata}
+\printpage[name=two, page=4]
+
+The only non-trivial differential are $d_k$ and looking at the $E_\infty$ page the only non-trival terms will be $E^{0,0}_\infty = \Z$ and $E^{k,0}_\infty = E^{0,k}_\infty  =\Z$. Obviously then $H^0(F)=\Z$, and as $H^j(F)= 0 $ for $1\leq j,\leq k-1$, $H^k(F)=\Z$. All other terms on the $E_\infty$ page vanish and for degree reasons $H^{k}(F) \cong H^{k+k-1}(F)\cong  H^{k+2(k-1)}(F)\cong \ldots$ and by induction we then see $H^{k+j\cdot (k-1)}(F) \cong H^{k}(F)$ for all $j=0,1,\ldots$ and all other $H^m(F)$ vanish. \\
+Of course from the multiplicative structure, we have a multiplication $H^q(F)\otimes H^{q'}(F)\to H^{q+q'}(F)$. The only non-trivial cohomology groups $H^0(F)$, $H^{k+j(k-1)}(F)$ have multiplication $H^{k+j(k-1)}(F) \otimes H^{k+j'(k-1)}(F)\to H^{k+(j+j')(k-1)}(F)$ but the output always vanishes. 
+
+
+
+\end{enumerate}
+\end{document}

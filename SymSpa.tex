@@ -6,7 +6,7 @@
 
 \begin{document}
 \maketitle	
-\section{1}
+\section{(Locally) Symmetric Spaces}
 \begin{defn}
 A \textbf{Riemann symmetric space} is a Riemannian manifold $(M,g)$ such that $\forall p\in M$ there exists a isometry $s_p: M\to M$ satisfying $s_p(p)$ and $ds_p\vert_p = -\text{id}$.
 \end{defn}
@@ -21,11 +21,194 @@ A few examples:
 \begin{itemize}
 \item On $\R^n$, $s_p(p+v) = p-v$.
 \item $S^n\subset \R^n$ given w.l.o.g at $p=(0,0,\ldots,0,1)$ as $s_p(x_1,\ldots,x_{n+1}) = (-x_1,\ldots,-x_n,x_{n+1})$.
-\item $\Hy^n$ as the Poincare disc model $(\D^n,g_\text{hyp})$ by $s_0(v) = -v$.
+\item $\Hy^n$ as the Poincare disc model $(D^n,g_{\text{hyp}})$ by $s_0(v) = -v$.
 \end{itemize}
 \end{example}
 
 \begin{defn}
-A Riemannian manifold $(M,g)$ is called a \textbf{locally symmetric space} if $\forall p\in M$ there exists a neighbourhood of $p$, $p\in \U_p$ and an isometry $s_p:\U_p\to \U_p$ of $(\U_p,g\vert_{U_p})$ such that $ds_p\vert_p = -id$.
+A Riemannian manifold $(M,g)$ is called a \textbf{locally symmetric space} if $\forall p\in M$ there exists a neighbourhood $\U_p\ni p$ and an isometry $s_p:\U_p\to \U_p$ of $(\U_p,g\vert_{\U_p})$ such that $ds_p\vert_p = -id$.
 \end{defn}
+Note that a diffeomorphism with the same properties (no necessarily an isometry) always exists.
+
+\begin{theorem}
+Let $(M,g)$ be a Riemannian manifol, then the following are equal.
+\begin{enumerate}
+\item $M$ is a locally symmetric space.
+\item The curvature tensor is parallel, i.e. $\nabla_X R(Y,Z)T \equiv 0$, $\forall X,Y,Z,T\in V(M)$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Take some $s_p$ as definite at $p\in M$. Given $X,Y,Z,T\in V(M)$ when we have 
+\begin{multline*}-\nabla_X R(Y,Z)T(p) = d(s_p)\vert_p (\nabla_X R(Y,Z)T)(p) = \nabla_{d(s_p)\vert_p}(R(Y,Z)T) = \\
+=\nabla_{d(s_p)\vert_p} R(d(s_p)Y,d(s_p)Z)d(s_p)T = (-1)^4 \nabla_X R(Y,Z)T(p).
+\end{multline*}
+Conversely, follows from the following theorem as follows: Since $M$ as parallel curvature tensor and $-\text{Id}:T_pM\to T_pM$ is a linear isometry preserving the curvature tensor, then for $p\in M$ we can find neighbourhoods $\U\ni p$ and isometry $s_p:\U\to\U$ such that $d(s_p)\vert_p = -\text{Id}$.
+\end{proof}
+
+\begin{theorem}
+Let $(M,g^M)$, $(N,g^N)$ be Riemannian manifolds with parallel curvature tensor. Let $m\in M$, $n\in N$ then for any linear isometry $\phi: T_mM\to T_nN$ preserving curvature tensors ($\phi(R^M(X,Y),Z) = R^N(\phi(X),\phi(Y))\phi(Z)$, $\forall X,Y,Z\in T_m M$), and for any normal neighbourhood $\U = \exp_m(W)$ of $m$ such that $\exp_m\vert_W$ is a diffeomorphism, there is a normal neighbourhood $\V$ of n and a local isometry $f:\U\to\V$ such that $f(m)=n$ and $df\vert_m = \phi$.
+\end{theorem}
+\begin{proof}
+We want to show $f:= \exp_m\circ \phi \circ \exp_m^{-1}\vert \U: \U\to N	$ is a local isometry. We already know that $f$ is an isometry at $m$.\\
+Given $x\in \U$, $w\in T_x M$ we need to show that $\Vert df_x w\Vert_{g^N} = \Vert w\Vert_{g^M}$.\\
+Let $v\in T_mM$ such that $\exp_m(v) = x$ and denote $w' = d(\exp_m)^{-1}(w)\in T_mM$. Consider the Jacobi field $J$ along $\exp_m(tv)$ with $J(0)=0$, $J'(0) = w'$ (i.e. $J(t) = d(\exp_m)\vert_{tv}(tw')$). Let $e_1 = v$, $(e_2,\ldots, e_n)$ an orthonormal basis of $e_1^\perp\subset T_m M$ and $e_i(t)$ the parallel transport of $e_i$ along $c(t):= \exp_m(tv)$, hence $(e_1(t),\ldots e_n(t))$ is orthogonal basis of $T_{\exp_m(tv)} M$.\\
+Then there are $y_i(t)\in C^\infty([0,1])$ such that $J(t) = \sum_{i=1}^n y_i(t)e_i(t)$.\\
+Let $(\epsilon_1(t),\ldots, \epsilon_n(t))$ be the parallel transport of $(\phi(e_1),\ldots, \phi(e_n))$ along $\gamma(t) :=\exp_n(t\phi(e_1))$ (hence $\epsilon_1(t) = \gamma'(t)$). Define $I(t) := \sum_{i=1}^n y_i(t)\epsilon_i(t)$, and we claim that $I$ is a Jacobi field  along $\gamma$, with $I(0) = 0$ and $I'(0) = \phi(w')$. For any $i= 1,\ldots,n$, $t\in [0,1]$,
+\begin{align*}
+g^N_{\gamma(t)}\left(I'' + R^N(\gamma',I)\gamma', \epsilon_i\right) &= g^N_{\gamma(t)}\left(\sum y_i\epsilon_i,\epsilon_i\right) + g^N_{\gamma(t)}\left(R^N(\gamma', \sum y_i\epsilon_i)\gamma', \epsilon\right)\\
+&= y''_i + \sum y_i g^N_{\gamma(t)}(R^N(\epsilon_1(t),\epsilon_j(t))\epsilon_1(t),\epsilon_i(t))\\
+&= y''_i + \sum y_i(t) g^N_{\gamma(0)}(R^N(\epsilon_1(0),\epsilon_j(0))\epsilon_1(0),\epsilon_i(0))\\
+&=y''_i + \sum y_i(t) g^N_{c(0)}(R^N(e_1(0),e_j(0))e_1(0),e_i(0))\\
+&= y''_i + \sum y_i g^N_{c(t)}(R^N(e_1(t),e_j(t))e_1(t),e_i(t))\\
+&=0
+\end{align*}
+So $I'' + R^N(\gamma',I)\gamma' = 0$ and $I$ is a Jacobi field. Moreover $I'(0) = \sum y'_i(0) \epsilon_i(0) = \sum y'_i(0) \phi(e_1(0))  = \phi(J'(0)) = \phi(w')$.\\
+By definition
+\[df\vert_x(w) = df_{\exp_m(v)}(d\exp_m\vert_v(w') = d\exp_m\vert_{\phi(v)}(\phi(w')\] 
+so $df_x(J(1)) = I(1)$ but 
+\begin{align*}
+\Vert J(1)\Vert_{g^M}^2 &= \Vert v\Vert_{g^M}^2\vert y_1(t)\vert^2 + \sum_{i=2}^n\vert y_i(1)\vert^2 \\
+&= \Vert\phi(v)\Vert^2_{g^N}\vert y_1(1)\vert^2 + \sum_{i=2}^n \vert y_i(1)\vert^2 = \Vert I(1)\Vert^2_{g^N}
+\end{align*}
+Thus $f$ is a local isometry.
+\end{proof}
+
+\begin{corollary}
+Let $M$, $N$ be complete locally symmetric spaces with $M$ simply connected with non-positive sectional curvature. For any curvature tensor preserving linear isometry $\phi:T_mM\to T_nN$ that preserves the curvature tensor, then there exists a Riemannian covering $f:M\to N$ with $f(m)=n$ and $df\vert_m = \phi$.
+\end{corollary}
+\begin{proof}
+By Cartan-Hadamard, $\exp_m:T_mM\to M$ is a diffeomorphism. Thus we get a local isometry $f:M\to N$ with $f(m)=n$ and $df\vert_m = \phi$. Since $M$ is complete, this guarantees that $f$ is a Riemannian covering.
+\end{proof}
+
+
+
+
+
+\begin{theorem}
+Let $M$, $N$ be complete locally symmetric spaces with $M$ simply connected. For any curvature tensor preserving linear isometry $\phi:T_mM\to T_nN$ that preserves the curvature tensor, then there exists a Riemannian covering $f:M\to N$ with $f(m)=n$ and $df\vert_m = \phi$.
+\end{theorem}
+\begin{corollary}
+Let $M$ be a complete locally symmetric space. Then the Riemannian universal cover $\tilde{M}$ of $M$ is a symmetric space.
+\end{corollary}
+\begin{proof}
+The universal cover of a complete Riemannian manifold is complete. We claim that $\tilde{M}$ is a locally symmetric space: $\pi:\tilde{M}\to M$ be the covering map, which is a local isometry, then 
+\begin{multline*}
+\pi(\nabla_X R^{\tilde{M}}(Y,Z),T) = \nabla_{d\pi(X)}d\pi(R^{\tilde{M}}(Y,Z),T) = \\
+=\nabla_{d\pi(X)}R^M(d\pi(Y),d\pi(Z))d\pi T = 0
+\end{multline*}
+Since $d\pi\vert_p$ is an isomorphism, $\nabla_X R^{\tilde{M}}(Y,Z)T=0$ if and only if $\tilde{M}$ is locally symmetric.\\
+Given $p\in \tilde{M}$, $\text{Id}_{T_p\tilde{M}}$ is a linear isometry and preserves the curvature tensor. Then by a previous corollary, there exists $s_p:\tilde{M}\to \tilde{M}$ a covering such that $s_p(p)=p$ and $ds_p\vert_p = -\text{id}_{T_p\tilde{M}}$. As every smooth covering of a simply connected space is a diffeomorphism, this implies that $s_p$ is a diffeomorphism (and a local isometry), so $s_p$ is an isometry.
+\end{proof}
+\begin{example}
+Let $M=S^n$, $N=\R P^n$ with natural metric (with sectional curvature = 1), then $M$, $N$ are complete locally symmetric spaces. In this case there are many linear isometries that preserve the curvature tensor (in fact they identify with $O(n)$).
+\end{example}
+\begin{proof}[Theorem]
+(Idea).  Such an $f$ should be defined such that 
+\[\begin{tikzcd}
+T_m M \arrow{r}{\phi} \arrow{d}{\exp_m} & T_nN \arrow{d}{\exp_n}\\
+M \arrow[r, dotted, "f"] &N
+\end{tikzcd}\]
+\end{proof}
+The issue is that in general this is not well defined i.e. there can exist $v,w\in T_m M$ such that $\exp_m v  \exp_m w$.\\
+We solve this by extending $f$ along paths and show that the extension is independent of the chosen path.
+\begin{remark}
+Recall that $\U\subset M$ is a \textit{normal neighbourhood} if $\U = \exp_p(W)$ for a star-shaped neighbourhood of 0, $W\subset T_p M$ and diffeomorphism $\exp_p\vert_W:W\to \U$. \\
+If additionally $\U = B_r(p)$ ($W = B_r(0)$) then $\U$ is called a \textit{normal ball}.
+\end{remark}
+
+We also need the following two observations
+\begin{enumerate}
+\item Let $M$, $N$ be complete locally symmetric spaces $B_r(p)$, $B_\ell(p)\subset M$ normal balls with $\ell>r$ and $f:B_r(p)\subset M\to V\subset N$ is a local isometry, then $\hat{f}:= \exp^N_{f(p)}\circ df_p\circ (\exp^M_p)^{-1}:B_\ell(p)\to B_\ell(f(p))$ is a local isometry extending $f$.\\
+Note that it follows from a previous theorem that $\hat{f}$ is a local isometry with $\hat{f}(p)= f(p)$, $d\hat{f}\vert_p = df\vert_p$.\\
+Recall that two isometries are equal if they and their differentials are equal at $p$.
+\item For any $p\in M$, $\exists r>0$ such that $B_r(q)$ is a normal ball for any $q\in B_r(p)$.
+\end{enumerate}
+
+\begin{lemma}
+Let $M$, $N$ be complete locally symmetric spaces, $m\in M$, $m\in\U$ a normal neighbourhood, $f:\U\to N$ a local isometry and $\sigma:[0,1]\to M$ a smooth curve with $\sigma(0)=m$. Then $f$ can be continued along $\sigma$ i.e. $\forall t\in [0,1]$, there exist $\U_t$ neighbourhood of $\sigma(t)$ such that $f_t:\U_t\to N$ is an isometry, and $\exists \epsilon>0$ such that $\vert t-s\vert <\epsilon\implies \U_t\cap \U_s\neq \emptyset$ and $f_t\vert_{\U_t\cap \U_s}=f_ts\vert_{\U_t\cap \U_s}$..
+\end{lemma}
+\begin{proof}
+Define $I = \{t\in [0,1]\mid f \text{ can be continued along } \sigma\vert_{[0,t)}\}$. $I$ is non-empty (contains $t$ such that $\sigma([0,t])\subset \U$) and open (If $t_0\in I$ choose $\epsilon$ small enough such that $\sigma(t_0-\epsilon,t_0 + \epsilon)\subset \U_{t_0}$ and set $\U_t = \U_{t_0}, f_t = f_{t_0}$ for $t \in (t_0-\epsilon,t_0 + \epsilon)$). We show that $I$ is closed. Let $q$ be an accumulation point of $f_t(\sigma(t))$ for $t\to T:= \sup I$. Such a point always exists as $N$ is complete and $f_t(\sigma(t))\subset \overline{B_{L(\sigma)}(f(\sigma(0)))}$ (since $f_t$ is an isometry and $f_t = f_s$ on $\U_t\cap \U_s$).\\
+Choose $r>0$ such that it satisfied (2) for $q$, $\sigma(T)$. Then by construction there exists $t_0<T$ such that $\sigma(t_0)\in B_r(\sigma(T))$ and $F_t(\sigma(t_0))\in B_r(q)$. By (1) we can then extend $f_{t_0}$ on $B_r(\sigma(t_0))$. Setting $f_t = f_{t_0}$ and $\U_t = B_r(\sigma(t_0))$ on $(t_0-\epsilon,t_0+\epsilon)$ for $\epsilon$ small enough, we can extend f around $\sigma(T)$ thus $I$ is closed. Hence $I = [0,1]$.\\
+The second part follows from the compactness of $I$ - we can find finitely many $t_i$ such that $\U_{t_i}$ cover $I$ and chose $\U_t = \U_{t_i}$ for $t_i$ minimal such that $t\in \U_{t_i}$ and $f_t = f_{t_i}$.
+\end{proof}
+
+\begin{lemma}
+The continuation of $f$ along $\sigma$ is unique in the sense that if $\{\U_t,f_t\},\{V_t,\bar{f}_t\}$ are two different continuations and $A_t$is the connected component of $\U_t\cap V_t$ containing $\sigma(t)$ then $f_t\vert_{A_t} = \bar{f}_t\vert_{A_t}$.
+\end{lemma}
+\begin{proof}
+$I  \{t\in[0,1]\mid f_t(\sigma(t)) = \bar{f_t}(\sigma(t)),\, df_t\vert_{\sigma(t)}=d\bar{f_t}\vert_{\sigma(t)} \}$, then $I$ is open, closed and non-empty $\implies I=[0,1]$. This holds because isometries are uniquely defined by their value at a point and the differential at the point. \\
+For the same reason $f_t\vert_{A_T} = \bar{f_t}\vert_{A_T}$
+\end{proof}
+
+
+\begin{lemma}
+Let $M$, $N$ be complete locally symmetric spaces $\U$ a normal neighbourhood of $m$, $f:\U\to N$ a local isometry. Let $\sigma, \tau:[0,1]\to M$ smooth curves with $\sigma(0)=\tau(0) = m$, $\tau(1)=\sigma(1)$, curves being homotopic rel $\partial I$.
+\begin{proof}
+Let $H$ be the homotopy between $\sigma$, $\tau$ rel $\partial I$. Fix $s$ and let $f^s$ be the continuation of $f$ along the path $t\mapsto H(t,s)$. Let \[I=\{s\in [0,1]\mid \forall r\leq s \, f^r(\sigma(1))=f^\sigma(\sigma(1))\text{ and } df^r\vert_{\sigma(1)} = df^\sigma\vert_{\sigma(1)}\}.\]
+$I$ is non-empty as$0\in I$ and open as follows: given $s_0\in I$ we find $\epsilon>0$ such that for all $s'\in(s_0-\epsilon, s_0+\epsilon)$, $H(t,s')\in \U_t$. By (2) and compactness, there exists $r>0$ such that $B_r(\sigma(t))$ is a normal ball. Assume then that $B_r(H(s_0,t))\subset \U_t$ (as $H$ is smooth). Setting $\U^s_t = \U^{s_0}_t$ and $f^{s'}_t = f^{s_0}_t$ gives continuation along $H(_,s')$ thus $(s_0-\epsilon,s_0+\epsilon)\subset I$ (by construction) and $I$ is open. \\
+For $I$ closed, let $A= \sup I$ and as before $\exists r>0$ such that $B_r(H(t,A))$ is a normal ball for all $t\in [0,1]$ and $B_r(f^A(H(t,A))$ is a normal ball. As before $\exists \epsilon>0$ such that $\forall s: \vert A-s\vert<\epsilon$, $H(t,s)\in B_r(H(t,A))$ so $f^A$ is a continuation of $f$ along $H(_,s)$ for $s\in(A-\epsilon,A)$ where $f^A(\sigma(1)) = f^s(\sigma(1)) = f^\sigma(\sigma(1)) $ and $df^A_{\sigma(1)} = df^s_{\sigma(1)} = df^\sigma_{\sigma(1)}$ thus $A\in I\implies I =[0,1]$.
+\end{proof}
+\end{lemma}
+Back to the theorem we are trying to prove
+
+\begin{proof}{Theorem}
+Since $M,N$ are complete, $\exp$ is defined everywhere. Define $f$ (locally) though the relation $f(\exp_m(v))=\exp_n(\phi(v))$ - this is indeed well defined on a normal neighbourhood $\U$ of $m$.\\
+Set $\bar{f} = f\vert_\U$, and define $f$ on $\exp_m(v)$ via continuation of $\bar{f}$ along $\sigma(t) := \exp_m(tv)$. If there exists $v,w\in T_mM$ such that $\exp_m(v) = \exp	_n(v)$ then the paths $\sigma(t) = \exp_m(tv)$ and $\tau(t) = \exp_m(tw)$ are homotopic rel $\partial I$ due to $M$ being simply-connected. Then be the previous lemmma, it is well defined as $f(\exp_m(v)) = f(\exp_m(w))$. As $f$ is a continuation along paths it is a local isometry. $M$ being complete implies that $f$ is a smooth covering (+ localisation) by a previous lemma. Hence this is Riemann covering.
+\end{proof}
+
+\begin{theorem}
+Let $M$ be a complete, simply-connected Riemannian manifold then the following are equal.
+\begin{enumerate}
+\item $M$ is a symmetric space.
+\item $M$ is a locally symmetric space.
+\item Any curvature preserving linear isometry $\phi:T_xM\to T_yM$ is induced by a (unique) linear isometry $f:M\to M$ such that $f(x)=y$, $df_x = \phi$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+$1\implies 2$ is trivial, $2\implies 3$ hold by the previous theorem. For $3\implies 1$, we apply $3$ to $-\text{Id}:T_pM\to T_pM$.
+\end{proof}
+
+\begin{remark}
+Not all symmetric spaces are simply-connected.
+\end{remark}
+\begin{example}
+\begin{itemize}
+\item $\R P^n$ is a non-simply-connected symmetric space.
+\item $T^n  = (S^1)^n$ is a symmetric space (obviously not 1-connected).
+\end{itemize}
+\end{example}
+\begin{prop}
+Let $M$ be a symmetric space, the $M$ is complete.
+\end{prop}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{defn}
+Let $M$ be a smooth manifold. We say that a group action $G\curvearrowright M$ is \textit{transitive} if $ \forall p,q$ there exists $g\in G$ such that $g(p)=q$.
+\end{defn}
+
+\begin{prop}
+Let $M$ be a symmetric space. Then Iso$(M)$ acts transitively.
+\end{prop}
+\begin{proof}
+
+\end{proof}
+
+\begin{defn}
+An isometry $f:M\to M$ is called a \textit{transvection} if there exists $p\in M$ and geodesic $\gamma:[0,1]\to M$ with $\gamma(0) = p$, $\gamma(1)=f(p)$ such that $f$ realises parallel transport along $\gamma$.
+\end{defn}
+
+\begin{remark}
+If $M$ is not flat, then parallel transport really depends on the curve (or geodesic)
+\end{remark}
+
+\begin{prop}
+Let $M$ be a symmetric space. For any $p,q\in M$ and any geodesic $\gamma:[0,1]\to M$ with $\gamma(0)= p$, $\gamma(1)=q$, there exists an isometry realising parallel transport along $\gamma$.
+\end{prop}
+\begin{proof}
+
+\end{proof}
 \end{document}
