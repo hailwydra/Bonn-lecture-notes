@@ -1,0 +1,26 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{preamble}
+\title{Algebraic Topology I PS5}
+\author{Mathieu Wydra}
+\date{}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item Consider the fibration on the two-sheeted cover $S^0\to S^1\xrightarrow{p} S^1$
+\item Let $F\xrightarrow{i }E \xrightarrow{p} B$ be a fibration with $B$ path connected. Let $\{c_j\}\in H^*(E;\Z)$ with only finitely many in any degree, such that $\{i^*c_j\}$ form a $\Z$ basis for the cohomology of $H^*(F;\Z)$. Note first that this condition implies that the induced map is $i^*:H^q(E;\Z)\to H^q(F;\Z)$ is a surjection. \\
+We have the natural Serre spectral sequence $E^{p,q}_2 = H^p(B;H^q(F,\Z))\implies H^{p+q}(E;\Z)$, and also a Serre sequence arising from the fibration $F\to F\to *$, $\tilde{E}^{p,q}_2 = H^p(*; H^q(F;\Z))\implies H^{p+q}(F;\Z)$. The following diagram commutes:
+
+\[\begin{tikzcd}
+F \arrow[r,"="] \arrow[d,"="] & F\arrow{r}\arrow[d,"i"] & * \arrow{d}\\
+F\arrow[r,"i"]\arrow{d} & E\arrow[r,"p"]\arrow[d,"p"]& B\arrow[d,"="]\\
+* \arrow{r} & B\arrow[r,"="] & B
+\end{tikzcd}\]
+
+Then $i$ induces a map on spectral sequences $E_2^{p,q}\xrightarrow{i^*}\tilde{E}_2^{p,q}$ which collapses on the $E_\infty$ page so the map
+
+\[\begin	{tikzcd}
+H^q(E;\Z) \arrow[r,two heads] &E^{p,0}_\infty  = E^{0,q}_{q+1} \arrow[r,hook]& E^{0,q}_q\arrow[r,hook] &\ldots\arrow[r,hook]& E_2^{0,q} = H^q(F;\Z)
+\end{tikzcd}\]
+is just $i^*$. Hence as $i^*$ is surjective, each inclusion map must also be a bijection, so the $d_r:E^{0,q}_r\to E^{r,q-r+1}_r$ vanish for all $r$. Also on the $E_2$-page, $H^n(F;\Z)$ is a finitely generated free $\Z$-module. So by UCT $H^p(B;H^q(F;\Z)) = H^p(B;\Z)\otimes H^q(F;\Z)$. Since $d_r$ is zero on both the $p$ and $q$ axes, by multiplicative structure (ADD DETAIL) it is zero everywhere to the sequence collapses on the $E_2$ page. Then $H^p(B;\Z)\otimes H^q(B;\Z)\to H^{p+q})(E;\Z)$, $x\otimes y\mapsto s(x)\cap \pi^*(y)$ is an isomorphism.
+\end{enumerate}
+\end{document}
