@@ -1,0 +1,14 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{preamble}
+\title{Algebraic Topology I PS 9}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item[2] Let $p:E\to B$ a n-vector bundle where $B$ is paracompact. Take trivialisations at $x$, $\varphi:\U_x\times \F^n\to p^{-1}(\U_x)$, which form a cover  $\bigcup_{x\in B} \U_x\supset B$. Take a locally finite refinement $\{\V_x\}_{x\in B}$, and restrict $\varphi$ to $\varphi\vert_{\V_x}:\V_x\times \F^n\to p^{-1}(\V_x)$
+Since the sub-bundle $E\vert_{\V_x}$ is trivial, it admits a Euclidean metric $\mu_x$ from the standard euclidean metric on $\F^n$. 
+Locally finiteness condition means we can take a partition of unity $\{\phi_x\}$ subordinate to $\{\V_x\}$. Define 
+\[\mu=\sum_{x\in B} \phi_x \mu_x\] 
+where $\phi_x\mu_x$ is well defined on all $E$ as we can define it to vanish outside of $E\vert_{\V_x}$ and sum is finite. This is a Euclidean metric on $E$ as on each fibre,
+$\mu\vert_{E_p}:v\to \sum_{x\in B}\phi_x(p) \mu_x\vert_{E_p}(v)$. Quadratic property is obvious and positive definiteness holds as at least one $\phi_x(p) >0$.
+\end{enumerate}
+\end{document}

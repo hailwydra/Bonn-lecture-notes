@@ -1,0 +1,51 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{preamble}
+\title{Algebraic Topology I PS7}
+\author{Mathieu Wydra}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item Let $\tilde{x}, \tilde{y}$ be generators for $H^n(S^n;\Z)$, $H^{2n}(S^{2n};\Z)$ , $f:S^{2n-1}\to S^n$ and induced generators $x\in H^n(C(f);\Z)$, $y\in H^{2n}(C(f);\Z)$.
+\begin{enumerate}
+\item Let $n$ be odd. The cup product $x\smile x = (-1)^{n^2}(x\smile x)$ hence $x^2 = 0$ so $h(f) = 0$.
+\item Define $h:\pi_{2n-1}(S^n)\to \Z$ as follows: pick representative of some homotopy class $f\in [f]\in \pi_{2n-1}(S^n)$, then $[f]\mapsto h(f)$. This is well defined as the mapping cone $C(f)$ is homotopic to the cone over any other choice of representatives.
+For homomorphism, pick two representatives $f\in [f], g\in [g]$ then sum of $[f],[g]$ in $\pi_{2n-1}(S^n)$ is represented by the composition 
+\[f+g:S^{2n-1}\xrightarrow{\alpha} S^{2n-1}\vee S^{2n-1}\xrightarrow{f\wedge	g}S^n \vee S^n\xrightarrow{\beta} S^n\]. \\
+Consider the map $\phi:C(f\vee g)\circ \alpha)\to 
+C(f+g)$ defined by folding $S^n\vee S^n$ to $S^n$ via $\beta$. Take generators $a\in H^n(C(f+g))$, $b\in H^{2n}(C(f+g))$, $c\in H^{2n}(C((f\vee g)\circ \alpha)))$, $d,d'\in H^{n}(S^n\vee S^n)$. Note that $\phi^*(a\smile a) = (\phi^* a)^2 = (d+d')^2$ via the action of the folding map on $C((f\vee g)\circ \alpha))$.\\
+ Since $d, d'$ corresponding to generators of $H^n(S^n)$, $d^2 = d'^2 = 0$ and the maps of $S^n\to C(f), C(g)$ induce $(d+d')^2 = h(f)y_f + h(g)y_g$ where $y_f,y_g$ are generators of $H^{2n}(C(f)), H^{2n}(C(g))$ respectively. Moreover, $y_f, y_g$ also generate $H^{2n}(C(f)\vee C(g))$ so by collapsing $e^{2n}$ in $C((f \vee g)\circ \alpha)$ we get map $\varphi: C((f \vee g)\circ \alpha)\to C(f)\vee C(g)$ and so looking at $d,d'$ as elements in $H^{2n}(C((f \vee g)\circ \alpha))$; $(d+d')^2 = h(f)\varphi^*(y_f) + h(g)\varphi^*(y_g)$. \\
+Thus
+\[h(f+g)\phi^*b = \phi^* a^2 = (d+d')^2 = h(f)\varphi^* y_f + h(g)\varphi^* y_g\]
+since $a^2 = h(f+g)b$. Since $y_f$, $y_g$, $a$ all map to a generator of $H^{2n}(C((f\vee g)\circ \alpha)))$ we can chose them to map all to $c$ (by sign). Then the result follows.
+\item Let $g:S^n \to S^n$ be a map of degree $d$, then consider the mapping cone $C(g\circ f)$ and the natural map $\phi:C(f)\to C(g\circ f)$. Then $\phi$ induces a morphism $\phi^*:H^n(C(g\circ f))\to H^n(C(f))$ which sends a generator $\sigma\in H^n(C(g\circ f))$ to $d\tau\in H^n(C(f))$ where $\tau$ is a generator of $H^n(C(f))$ such that the signs match up. Since $H^{2n}(C(f)) \cong H^{2n}(C(g\circ f))$, then pick a generators $H^{2n}(C(f))\ni y = y' \in H^{2n}(C(g\circ f))$. Thus in $C(g\circ f)$, 
+$h(g\circ f) y'=\sigma^2=d^2 \tau^2 = d^2h(f)y$ the result follows.
+\item Consider the composite map 
+\[\alpha:S^{2n-1}\to S^n\vee S^n\xrightarrow{f} S^n.\]
+By attaching a $e^{2n}$ cell to $S^n$ along $\alpha$ we can get $\alpha':S^{2n-1}\to S^n\hookrightarrow{}C(\alpha)$ which is null-homotopic by construction. 
+Pick generators $z,z'\in H^{2n}(S^n\vee S^n) \cong \Z\oplus \Z$ corresponding to the different $\Z$-parts. The folding map $f:S^n\vee S^n \to S^n$ is such that $f^*(\tilde{x}) = z+z'$. Moreover we can extend $f$ to a map $F:S^n\times S^n\to S^n$. Note that $F^*$ induces an isomorphism $H^{2n}(C(\alpha)) \cong H^{2n}(S^n\times S^n)$.\\
+The cup square $z\smile z = z'\smile z' = 0$ in $S^n\times S^n$ and $z\smile z'$ is a generator of $H^{2n}(S^n\times S^n)$. For any generator $\sigma\in H^{2n}(C(\alpha);\Z)$ we then have such that $F^*(\sigma) = \pm(z\smile z')$, then the Hopf invariant here is such that $\tilde{x}\smile \tilde{x} = h(\alpha)\sigma$, so $F^* (\tilde{x}\smile\tilde{x}) = h(\alpha)F^*(\sigma) = \pm h(\alpha)(z \smile z')$.
+Then as $F^*(\tilde{x}) = z+z'$, 
+\begin{align*}
+F^*(\tilde{x}^2) = (F^* \tilde{x})^2 = (f^* \tilde{x})^2  = (z+ z')^2 = z\smile z'+z'\smile z = (1+(-1)^{n^2})z\smile z' = 2z\smile z'
+\end{align*}	
+Then $\pm h(a)z\smile z' = 2z\smile z'$ and the result follows.
+\item We have that $H^{kn}(\Omega S^{n+1}) = \Z$ for all $k$. Let $f:S^{2n-1}\to \Omega S^{n+1}$ be that attaching map of the $e^2n$-cell onto the $e^n$ cell of $\Omega S^{n+1}$ (which under attaching with the 0-cell is $S^n$).
+\end{enumerate}
+\item Consider based CW-pair $(X,A)$ with inclusion map $i:A\to X$ and base-point $*$. $i$ is an $n$-equivalence for some $n$, so $(X,A)$ is an $n$-connected pair.
+By the 'correct' Blakers-Massey theorem, the pushout 
+\[\begin{tikzcd}
+A/X & X\arrow{l}\\
+* \arrow{u} & A \arrow[u,"i"]\arrow[l,"p"]
+\end{tikzcd}\]
+where $p$ is obviously a $m$-equivalence, induces an equivalence of $\pi(X/A) \cong \pi_k(X/A, *) \cong \pi_k(X,A)\cong \pi_k(X,A,*)$ for $k\leq m+n-1$. Then from the exact sequence on relative homotopy
+\[\begin{tikzcd}
+\ldots\arrow{r}& \pi_k(A)\arrow{r}& \pi_k(X)\arrow{r}& \pi_k(X,A)\arrow{r}& \pi_{k-1}(A)\arrow{r}&\ldots
+\end{tikzcd}\]
+we get
+\[\begin{tikzcd}
+\ldots\arrow{r}& \pi_k(A)\arrow{r}& \pi_k(X)\arrow{r}& \pi_k(X/A)\arrow{r}& \pi_{k-1}(A)\arrow{r}&\ldots
+\end{tikzcd}\]
+
+By Freudenthal, $\pi_{k+\ell}(\Sigma^\ell X)$, $\pi_{k+\ell}(\Sigma^\ell A)$ stabilise for large enough $\ell$ (as we are doing this on CW-complexs) and then so does $\pi_k(X,A)$, hence passing to the colimit gives us the required exact sequence on stable homotopy groups.
+\end{enumerate}
+\end{document}

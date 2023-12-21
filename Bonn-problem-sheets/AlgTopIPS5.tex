@@ -6,21 +6,32 @@
 \begin{document}
 \maketitle
 \begin{enumerate}
-\item Consider the fibration on the two-sheeted cover $S^0\to S^1\xrightarrow{p} S^1$
-\item Let $F\xrightarrow{i }E \xrightarrow{p} B$ be a fibration with $B$ path connected. Let $\{c_j\}\in H^*(E;\Z)$ with only finitely many in any degree, such that $\{i^*c_j\}$ form a $\Z$ basis for the cohomology of $H^*(F;\Z)$. Note first that this condition implies that the induced map is $i^*:H^q(E;\Z)\to H^q(F;\Z)$ is a surjection. \\
+\item \begin{enumerate}
+\item Consider the fibration on the two-sheeted cover $S^0\to S^1\xrightarrow{p} S^1$. Note $H_0(S^0;\Z) = \Z\oplus \Z$, so $H_*(S^1;H_0(S^0;\Z)) = \Z\oplus\Z,\Z\oplus \Z, 0\ldots$. We pick a cell structure on $S^1$ with 1 cell $e_1$, attached to 0-cell $e_0$. Looking at the local coefficient system $H_0(F_{(-)};\Z)$ on $S^1$ induced by the fibration. The differentials
+\[d_1(\sigma,g) = (\sigma\circ d_0, (\sigma_{0,1})_*g) - (\sigma\circ d_1,g)\]
+\[d_2(\sigma,g) = (\sigma\circ d_0, (\sigma_{0,1})_*g) - (\sigma\circ d_1,g) + (\sigma\circ d_2,g)\]
+Let $\sigma$ have image $e_1$, so $d_1(\sigma,m) = (e_0, (\sigma_{0,1})_*m-m)$. $\sigma$ lifts to $\tilde{\sigma}$ a 1-simplex with image a half-circle on $S^1$. Since $H_0(F_x;\Z) \cong H_0(S^0;\Z) = \Z\oplus \Z$, this map induces a map $H_0(F_{e_0};\Z)\to H_0(F_{e_0'};\Z)$, $(m,n)\to (n,m)$ where $e_0'\in S^1$ is antipodal to $e_0\in S^1$. So $d_1(\sigma, (m,n)) = (e_0, (n-m,m-n))$. This show  
+\[H_0(S^1; H_0(F_{(-)};\Z) = \frac{\Z\oplus \Z}{\text{im }d_1} = \frac{\Z\oplus \Z}{\text{im }d_1} = \frac{\Z\oplus \Z}{\Z\times (1,-1)} \not\cong \Z\oplus \Z = H_0(S^1;H_0(S^0;\Z)).\]
+Similarly it can also be show that $d_2$ is onto and so 
+\[H_1(S^1; H_0(F_{(-)};\Z) = \ker d_2 \cong \Z \not\cong H_1(S^1;H_0(S^0;\Z))\]
+
+\item Let $(X,x)$ be based connected CW, and universal cover $q:\tilde{X}\to X$. Suppose $\pi = \pi_1(X,x)$ acts on $Y$ CW, with induced action on homology $\alpha$. Consider fibre bundle $Y\to \tilde{X}\times_\pi Y \xrightarrow{q\times x} X$. Take the action $\beta:\pi\times H_*(Y;\Z)\to H_*(Y;\Z)$ where $[\gamma]$ acts on $H_*(Y;\Z)$ by 
+\end{enumerate}
+\item Let $F\xrightarrow{i }E \xrightarrow{p} B$ be a fibration with $B$ path connected. Let $\{c_j\}\in H^*(E;\Z)$ with only finitely many in any degree, such that $\{i^*c_j\}$ form a $\Z$ basis for the cohomology of $H^*(F;\Z)$. Note first that this condition implies that the induced map is $i^*:H^q(E;\Z)\to H^q(F;\Z)$ is a surjection. Since $H^*(F;\Z)$ is freely generated, there is a right inverse $j:H^*(F;\Z)\to H^*(E;\Z)$.\\
 We have the natural Serre spectral sequence $E^{p,q}_2 = H^p(B;H^q(F,\Z))\implies H^{p+q}(E;\Z)$, and also a Serre sequence arising from the fibration $F\to F\to *$, $\tilde{E}^{p,q}_2 = H^p(*; H^q(F;\Z))\implies H^{p+q}(F;\Z)$. The following diagram commutes:
 
 \[\begin{tikzcd}
-F \arrow[r,"="] \arrow[d,"="] & F\arrow{r}\arrow[d,"i"] & * \arrow{d}\\
-F\arrow[r,"i"]\arrow{d} & E\arrow[r,"p"]\arrow[d,"p"]& B\arrow[d,"="]\\
-* \arrow{r} & B\arrow[r,"="] & B
+F \arrow[r,equal] \arrow[d,equal] & F\arrow{r}\arrow[d,"i"] & * \arrow{d}\\
+F\arrow[r,"i"] & E\arrow[r,"p"]& B
 \end{tikzcd}\]
 
-Then $i$ induces a map on spectral sequences $E_2^{p,q}\xrightarrow{i^*}\tilde{E}_2^{p,q}$ which collapses on the $E_\infty$ page so the map
+Then by naturality argument $i$ induces a map on spectral sequences $E_r^{p,q}\to\tilde{E}_r^{p,q}$ which converges on the $E_\infty$ page to $i^*$. $\tilde{E_2}$-page only has non-trivial entries $E_2^{0,q}$ so collapses on the $E_2$-page. So the composition of edge maps
 
 \[\begin	{tikzcd}
-H^q(E;\Z) \arrow[r,two heads] &E^{p,0}_\infty  = E^{0,q}_{q+1} \arrow[r,hook]& E^{0,q}_q\arrow[r,hook] &\ldots\arrow[r,hook]& E_2^{0,q} = H^q(F;\Z)
+H^q(E;\Z) \arrow[r,two heads]\arrow[d,"i^*"] &E^{0,q}_\infty = E^{0,q}_{q+1} \arrow[r,hook]\arrow[d]& E^{0,q}_q\arrow[r,hook]\arrow[d] &\ldots\arrow[r,hook]& E_2^{0,q} = H^q(F;\Z)\arrow[d,equal]\\
+H^q(F;\Z)\arrow[r,equal]&H^q(F;\Z)\arrow[r,equal]&H^q(F;\Z)\arrow[r,equal]&\ldots\arrow[r,equal]&H^q(F;\Z)
 \end{tikzcd}\]
-is just $i^*$. Hence as $i^*$ is surjective, each inclusion map must also be a bijection, so the $d_r:E^{0,q}_r\to E^{r,q-r+1}_r$ vanish for all $r$. Also on the $E_2$-page, $H^n(F;\Z)$ is a finitely generated free $\Z$-module. So by UCT $H^p(B;H^q(F;\Z)) = H^p(B;\Z)\otimes H^q(F;\Z)$. Since $d_r$ is zero on both the $p$ and $q$ axes, by multiplicative structure (ADD DETAIL) it is zero everywhere to the sequence collapses on the $E_2$ page. Then $H^p(B;\Z)\otimes H^q(B;\Z)\to H^{p+q})(E;\Z)$, $x\otimes y\mapsto s(x)\cap \pi^*(y)$ is an isomorphism.
+is just $i^*$. Similarly, we can show that the composition of maps $H^p(B;\Z)\twoheadrightarrow E^{p,0}_3\twoheadrightarrow\ldots \twoheadrightarrow E^{p,0}_\infty\hookrightarrow H^p(E;\Z)$ is equal to $p^*: H^p(B;\Z)\to H^p(E;\Z)$ using the fibre sequence $*\to B \to B$.\\
+Now as $i^*$ is surjective, each inclusion map must also be a bijection, so the $d_r:E^{0,q}_r\to E^{r,q-r+1}_r$ vanish for all $r$. Also on the $E_2$-page, $H^q(F;\Z)$ is a finitely generated free $\Z$-module. So by UCT $H^p(B;H^q(F;\Z)) = H^p(B;\Z)\otimes H^q(F;\Z)$. Since $d_r$ is zero on both the $p$ and $q$ axes for all $r$, by multiplicative structure $d_r$ is zero everywhere to the sequence collapses on the $E_2$ page. This is seen by induction, . Then $H^p(B;\Z)\otimes H^q(F;\Z)\to H^{p+q}(E;\Z)$, $x\otimes y\mapsto p^*(x)\smile j(y)$ is an isomorphism. It can be seen from this then that $\{c_j\}$ is a basis for the $H^*(B;\Z)$-module $H^*(E;\Z)$.
 \end{enumerate}
 \end{document}

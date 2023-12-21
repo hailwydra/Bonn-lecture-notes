@@ -1,0 +1,59 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{preamble}
+\title{Algebraic Topology I PS 8}
+\author{Mathieu Wydra}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item Denote $X = \R P^\infty $ and note that $\Sigma^n X $ is $n$-connected.
+
+
+First let us do the case $n=0$, then $\pi_1(X) = \F_2$ and $\pi_1(A\vee B)\cong \pi_1(A) * \pi_1(B)$. So $\F_2$ must lie in one of them say $A$. The rest of the degrees follow by taking the suspension of $X$ and considering the following cases, then using the stability of $\Sq^i$.\\
+Now take some $n\geq 1$. Consider the weak homotopy equivalence $\Sigma^n X \simeq A\vee B$. These spaces are both 1-connected so this induces an isomorphism on cohomology $\F_2[\iota_1] \cong H^{*+n}(X;\F_2)\cong H^*(\Sigma^n X;\F_2)\cong H^*(A\vee B;\F_2)$. Moreover $\tilde{H}^*(A\vee B;\F_2) = \tilde{H}^*(A;\F_2)\oplus \tilde{H}^*(B;\F_2)$. Pick $x = \iota_1\in H^1(X;\F_2)$, the generator for the cohomology ring on $\R P^\infty$. Then the generator on the ring $H^*(\Sigma^n X;\F_2)$ is $x^n$ which will shall now consider as such. Without loss of generality let $x$ be contained in  $H^*(A;\F_2)$. Since we have Steenrod squares on $X$ and so on $\Sigma^n X$ we also have it on $H^*(A\vee B;\F_2)$.
+
+We have $\Sq^1(x^k) = \begin{cases} x^{k+1} & k \text{ odd }\\
+0 & k \text{ even }
+\end{cases}$ and  $\Sq^2(x^k) = \begin{cases} x^{k+2} & k \equiv 2,3 \text{ mod } 4\\
+0 & k \text{ even }
+\end{cases}$
+
+$\Sq^1(x) = x^2$, $\Sq^2(x^2) = x^4$ so $x^2$, $x^4$ is contained in $H^*(A;\F_2)$. Moreover $\Sq^1(x^3) = x^4$ so $x^3$ also in $H^*(A;\F_2)$. We can now proceed inductively: $x^{4j+2}\in H^*(A;\F_2)\implies x^{4j+4}\in H^*(A;\F_2)$, $x^{4j+3}\in H^*(A;\F_2)\implies x^{4j+1}\in H^*(A;\F_2)$ by the above relations. Moreover, $\Sq^1(x^{4j+1}) = x^{4j+2}$, $\Sq^1(x^{4j+3}) =  x^{4j+4}$ so $x^{4j+1},x^{4j+3}\in H^*(A;\F_2)$. Therefore if $x$ lies in $H^*(A;\F_2)$ then all rest $x^k$ lies in $H^*(A;\F_2)$ hence $H^*(B;\F_2)$ is trivial on cohomology and therefore also on homotopy so is weakly contractible. 
+\item Let $X$ be $(n-1)$-connected for some $n\geq 2$. By Hurewicz $\pi_n(X)\cong H_n(X)$ and from the suspension isomorphism $s:H_k(X)\to H_{k+1}(\Sigma X)$, $\Sigma X$ is $n$-connected. Consider the fibre sequence $\Omega\Sigma X\to P \Sigma X \xrightarrow{p} \Sigma X$, and take the maps $\phi: X\to \Omega \Sigma X$, $\phi(x)(t) = [x,t]$, $\varphi:CX\to P\Sigma X$, $\varphi([x,t])(s) = [x,st]$ we get diagram
+
+\[\begin{tikzcd}
+X \arrow{r} \arrow[d, "\phi"] & CX \arrow{r} \arrow[d,"\varphi"] & \Sigma X \arrow[d,equal]\\
+\Omega \Sigma X \arrow{r} & P\Sigma X \arrow[r,"p"] & \Sigma X
+\end{tikzcd}\] which commutes with the rest of the maps being the natural ones.\\ Consider the Serre spectral sequence in homology. $\Sigma	 X$ is $n$-connected and $\Omega \Sigma X$ is $(n-1)$-connected, so $H_p(\Sigma X) = 0$ for $0<p\leq n$ and $H_q(\Omega\Sigma X) = 0$ for $0<q\leq  n-1$.\\ (Local coefficient system is trivial as $\Omega \Sigma X$ is path-connected).
+
+In the diagram $H_k(\Sigma X,b_0;\Z)\xleftarrow{p^*} H_k (P\Sigma X, \Omega\Sigma X;\Z)\xrightarrow{\delta}H_{k-1}(\Omega\Sigma X; \Z)$ we get the transgression $\tau$ by restricting to the domain $E^k_{k,0}$ such that it maps to the range $H_{k-1}(\Omega\Sigma X)/ \ker p^*$.
+
+\begin{sseqdata}[name = 1, homological Serre grading, classes = {draw = none}, no x ticks, no y ticks, x range = {0}{5}, y axis gap = 1.1cm, xscale = 1.7]
+\class["\Z"](0,0)
+\foreach \x in {0,3,4} {\class["0"](\x,1)}
+\foreach \x in {1,2} \foreach \y in {0,...,3} {\class["0"](\x,\y)}
+\class["H_n(\Omega \Sigma X)"](0,2)
+\class["H_{n+1}(\Omega \Sigma X)"](0,3)
+\class["H_{n+1}(\Sigma X)"](3,0)
+\class["H_{n+2}(\Sigma X)"](4,0)
+\d3(3,0)
+\end{sseqdata}
+\printpage[name = 1,page = 3]
+
+Consider the diagram induced by the previous one.
+
+\[\begin{tikzcd}
+H_m(X) \arrow[d,"\phi_*"] & H_{m+1}(CX,X) \arrow[l,"\partial","\cong"'] \arrow[r,"\cong"] \arrow[d,"\varphi_*"]& H_{m+1}(\Sigma X)\arrow[d,equal]\\
+H_m(\Omega\Sigma X) & H_{m+1}(P\Sigma X, \Omega \Sigma X) \arrow[l,"\partial","\cong"']\arrow{r} & H_{m+1}(\Sigma X)
+\end{tikzcd}\]
+Since $\rho: = p\circ \varphi:CX\to \Sigma X$ is the natural quotient map and $\rho_*:H_m(CX,X)\to H_k(\Sigma X,b_0)$ is an isomorphism it follows that $p_*$ is surjective so the trangression $\tau$ is defined on all of its domain $H_k(\Sigma X,b_0)$. So from the diagram we get $\tau\circ s = \partial\circ \varphi_*\circ (\rho_*)^{-1} \circ s = \phi_*$. 
+
+We have the Serre exact sequence
+
+\[\begin{tikzcd}
+H_{2n}(\Omega\Sigma X;\Z) \arrow{r} & H_{2n}(P\Sigma X;\Z) \arrow[r,"p^*"] & H_{2n}(\Sigma X;\Z) \arrow[r,"\tau"] & H_{2n-1}(\Omega \Sigma X;\Z)\arrow{r} & \ldots
+\end{tikzcd}\]
+
+
+Then as $P\Sigma X$ contractible, this gives us that $H_{k+1}(\Sigma X;\Z) \xrightarrow{\tau} H_{k}(\Omega \Sigma X;\Z)$ is an isomorphism for all $k\leq 2n-1$. Hence as $\tau$ is an isomorphism, so is $\phi$ and thus $\varphi:H_k(CX,X)\to H_k(P\Sigma X, \Omega \Sigma X)$ for $k\leq 2n-1$. Then by relative Hurewicz theorem, as $H_k(\Omega \Sigma X,X)=0$ for $k\leq 2n-1$ then $\pi_k(\Omega \Sigma X,X) =0$ for $k\leq 2n-1$. Hence for the long exact sequence $\pi_k(X)\to \pi_k(\Omega \Sigma X)$ is an isomorphism for $k<2n-1$ and an epimorphism for $k=2n-1$. Then the result follows from the isomorphism $\pi_{k+1}(\Sigma X) \cong \pi_k(\Omega \Sigma X)$.
+\end{enumerate}
+\end{document}

@@ -3,6 +3,7 @@
 
 \title{Symmetric Spaces}
 \date{}
+\author{Mathieu Wydra}
 
 \begin{document}
 \maketitle	
@@ -206,7 +207,56 @@ If $M$ is not flat, then parallel transport really depends on the curve (or geod
 \end{remark}
 
 \begin{prop}
-Let $M$ be a symmetric space. For any $p,q\in M$ and any geodesic $\gamma:[0,1]\to M$ with $\gamma(0)= p$, $\gamma(1)=q$, there exists an isometry realising parallel transport along $\gamma$.
+Let $M$ be a symmetric space. For any $p,q\in M$ and any geodesic $\gamma:[0,1]\to M$ with $\gamma(0)= p$, $\gamma(1)=q$, there exists an transvection realising parallel transport along $\gamma$.
+\end{prop}
+\begin{proof}
+
+\end{proof}
+
+\begin{prop}
+Let $M$ be a Riemannian manifold with action $Iso(M)\curvearrowright M$ that is transitive and $\exists p\in M$ and $s_p:M\to M$ an isometry with $s(p)=p$ and $ds_p\vert_p = -\text{Id}_{T_pM}$. Then $M$ is a symmetric space.
+\end{prop}
+\begin{proof}
+
+\end{proof}
+
+\begin{example}[Hyperbolic space]
+Let $q(x) = x_1^2+\ldots + x_n^2-x_{n+1}^2$ e a quadratic form of sign $(n,1)$.Define $\Hy^n:=\{x\in \R^{n+1}\vert q(x) = -1, x_{n+1}>0\}$ together with Riemannian metric $g_x^{\Hy^n} = q\vert_{x^\perp}$ using $T_x \Hy^n\cong x^\perp$.\\
+The subgroup of $O(n,1)=\{A\in GL_{n+1}(\R)\vert q(Ax) = q(x) \forall x\in \R^{n+1}\}$ preserving $\Hy^n$ acts transitively by isometries on $\Hy^n$. Consider $e_{n+1} = (0,\ldots, ,1)\in \Hy^n$ and $A = \begin{pmatrix}
+-\text{Id}_n & \\
+& 1
+\end{pmatrix}\in O(n,1)$.\\
+Then $Ae_{n+1} = e_{n+1}$ and $A\vert_{e_{k+1}^\perp} = -\text{Id}$. Hence $\Hy^n$ is a symmetric space.
+\end{example}
+\begin{example}[Grassmanians]
+Consider the grassmanian $\text{Gr}_k(\R^n)$.\\
+The topology on the space is: let $Y\subset (\R^n)^k \subset \R^{nk}$ be a set of linearly independent k-tuples in  $\R^n$. Then there is a natural projection $\pi:Y\to \text{Gr}_k(\R^n)$, $\pi(x_1,\ldots, x_k): = \text{Span}(x_1,\ldots, x_n)$. Equip $Y$ with the subspace topology and $\text{Gr}_k(\R^n)$ with the quotient topology.\\
+\underline{Manifold structure.} Let $V\in \text{Gr}_{n-k}(\R^n)$. Consider then $\U_V:=\{\U\in \text{Gr}_k(\R^n)\mid \U\cap V = \{0\}\}$. Fix $\U_0\in \U_V$. There is a natural bijection $\phi_{V,\U_0}:\U_V \to \text{Hom}(\U_0,V) \simeq \R^{k(n-k}$:\\
+Since $\U\oplus \R^n$, $\U\in \U_V$, $a\in \U_0 \implies$ $a = u+v,\, u\in \U, \,v\in V$ $\varphi_\U(a) := v$ (it is easy to check that $\varphi_\U\in \text{Hom}(\U_0,V)$).\\
+$\phi_V,\U_0$ is injective (Show) and surjective (Show). Moreover $\phi_{\U_0',V'} \circ \phi_{\U_0,V}$ is smooth (Show).\\
+\underline{Riemmanian metric}. Let $\langle ,\rangle$ be the inner porduct on $\R^n$. Let $\U^\perp$ be the orthogonal complement with respect to this inner product, then $\U^\perp \in \text{Gr}_{n-k}(\R^n)$.\\
+$d\phi_{\U,\U^\perp}$ gives identification 
+\[T_\U\text{Gr}_k(\R^n)\simeq T_0\text{Hom}(\U,\U^\perp)\simeq \text{Hom}(\U,\U^\perp)\simeq \U^*\otimes \U^\perp\]
+Identifying $\U^*$ with $\U$ via $\langle, \rangle$ gives an inner product over $\U^*$. Define $g_\U(u'\otimes v, u''\otimes w) = \langle u',u''\rangle\langle v,w \rangle$ and extend this linearly to $\U^*\otimes \U^\perp$ thus $g_\U$ defines an inner product on $\U^*\otimes \U^\perp$ and further is a Riemannian metric..\\
+\underline{$O(k)$ action}. We claim first that $O(n):=\{AA\in \text{GL}_k(\R)\mid \langle x,y \rangle = \langle Ax, Ay\rangle\, \forall x,y\}$  act transitively and by isometries on $\text{Gr}_n(\R^n)$. \\
+First take $A\in \text{GL}_k(\R)$. If $\varphi\in \text{Hom}(\U,\U^\perp)$, then $dA\varphi\in \text{Hom}(A\cdot \U, A\cdot \U^\perp)$ is given by $dA(\varphi)[Au] = A\cdot \varphi(u)$. Thus if $A\in O(k)$, hence $dA(u\otimes v) = (Au)\otimes(Av)\implies g_\U(u'\otimes v, u''\otimes w) = g_{A\U}(dA(u'\otimes v),dA(u''\otimes w))$ i.e $O(k)$ acts by isometries.\\
+Next, let $\U, \V\in \text{Gr}_k(\R^n)$ pick an orthonomal bases of $(\U,\langle,\rangle\vert_\U)$, $u_1,\ldots, u_k$ and extend this to an orthonormal basis $(u_1,\ldots, u_k)$ of $\R^n$. In the same way define $(v_1,\ldots,v_n)$. Then there exists $A\in O(k)$ such that $Au_i = v_i\implies A\U = \V$.
+
+\begin{remark}
+To check smoothness of metric $g$ it is enough to observe that on a neighbourhood $W$ of $\U\in \text{Gr}_k(\R^n)$ there is a map $h:W\mapsto O(k)$ such that for $X\in \mathfrak{X}(W)$, $h_p(X(p))\in T_\U\text{Gr}_k(\R^n)$ is smooth, then $p\mapsto g_p(X,Y) = g_\U(h_p(X(p)), h_p(Y(p)))$ and the latter is smooth.
+\end{remark}
+
+Finally, take $(e_1,\ldots,e_n)$ such that for $x = (x_1,\ldots,x_n)$ in that bases $\langle x,x\rangle = x_1^2 + \ldots + x_n^2$. Let $\U_0 = \text{Span}(e_1,\ldots,e_k)$ and $A=\begin{pmatrix}
+\text{Id}_k & \\
+& -\text{Id}_{n-k}
+\end{pmatrix}\in O(\U)$, then $A\cdot \U_0 = U_0$ and $dA_{\U_0}(u\otimes v) = -u\otimes v$ for $u\in \U^*, \, v\in \U^\perp$ i.e. $dA_{\U_0} = -\text{Id}_{T_{\U_0}\text{Gr}_k(\R^n)}$
+\end{example}
+Combining all the above we have 
+\begin{prop}
+$\text{Gr}_k(\R^n)$ with the metric above is a symmetric space.
+\end{prop}
+\begin{prop}
+$\text{Gr}_k(\R^n)$ is compact.
 \end{prop}
 \begin{proof}
 

@@ -1,0 +1,26 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{preamble}
+\title{Algebraic Geometry I PS 10}
+\date{}
+\author{Mathieu Wydra \& Jon Im}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item[2] Let $f:Y\to X$ be a scheme morphism. \begin{enumerate}
+\item Assume $\vert f\vert$ is homeomorphic to its closed image. Pick some $x\in X$. If $x$ is not in the image of $f$ then we can take an open affine neighbourhood $\U_x$ such that $f^{-1}(\U_x) =\emptyset$ since $f(Y)$ is closed. Assume then that $x\in f(Y)$ i.e $\exists ! y\in Y$ mapping to $x$, and take affine neighbourhood $\U_x\ni x$. Pick some open affine neighbourhood $V_y$ such that $f(V_y)\subset \U_x$. We take $g\in \Gamma(\U_x, \Oo_x)$ such that $x\in D(g)$ and $D(g)\cap \text{im}(f)\subset f(V_y)$ (as $f(V_y)$ is open in $\U_x\cap \text{im}(f)$) . Now let $h = f^*(g)\vert_{V_y}$, then $D(h) = f^{-1}(D(g))$. Thus every point has an open affine neighbourhood with affine preimage, and so $f$ is affine.
+\item Assume that $f$ is a universal homeomorphism. Then from $a)$ $f$ is clearly affine. Since $f$ is a homeomorphism under base change then it is also injective, closed under based change as well as surjective. Then affine and universally closed $\implies$ integral.\\
+Conversely assume that $f$ is surjective, universally injective
+and integral. It is then also affine and universally closed. Consider a base change $T\to S$. 
+\[\begin{tikzcd}
+Y_{T}\arrow[r,"p"] \arrow[d,"f_{T}"] & Y \arrow[d,"f"]\\
+X_{T}\arrow[r,"q"] & X
+\end{tikzcd}\]
+As $f$ is integral, its base change is also integral. Note that $q^{-1}(f(Y))=f_{S'}(p^{-1}(Y))$ (show by fibre product) so as $f$ is surjective, as is $f_{S'}$. Thus it is universally bijective and as it is universally closed it is universally a homeomorphism.
+\end{enumerate}
+\item[3] \begin{enumerate}
+\item $f:X\to S$. Let $\mathcal{K} = \ker f^\flat$ and let $\{\mathcal{K}_i\}$ be the set of q-coh $\Oo_S$ submodules of $\mathcal{K}$. $\mathcal{K}$ in general is not q-coh. Then $\mathcal{K}' := \text{im}(\oplus_i \mathcal{K}_i \to \Oo_S)$ is a q-coh $\Oo_S$ submodule. Moreover it is contained in $\mathcal{K}$ and by construction the largest q-coh submodule contained in $\mathcal{K}$. Since $\mathcal{K}$ is an ideal sheaf than so is $\mathcal{K}'$ and also q-coh so the subscheme $Z$ associated to this ideal sheaf is the schematic image.
+\item Let $f$ be q-com with kernel $K$. Wlog we can assume $S$ is affine and take a finite open affine covering $\{\U_\alpha\}$ of $X$. Considering the map $\Oo_X\xhookrightarrow{}\bigoplus_\alpha(\iota_\alpha)_* \Oo_{\U_\alpha}$ where $\iota_\alpha$ is the inclusion of $\U_\alpha$, we can get an injection $f_*\Oo_X\to\bigoplus_\alpha(f\circ \iota_\alpha)_* \Oo_{\U_\alpha}$. Note that $(f\circ \iota_\alpha)_* \Oo_{\U_\alpha}$ and so $\bigoplus_\alpha(f\circ \iota_\alpha)_* \Oo_{\U_\alpha}$ are q-coh. Then we see that $\mathcal{K}$ is the kernel of the map $\Oo_S\to \bigoplus_\alpha(f\circ \iota_\alpha)_* \Oo_{\U_\alpha}$ and thus is q-coh. Hence $\mathcal{K}  = \ker (\Oo_X\to \bigoplus_\alpha(f\circ \iota_\alpha)_* \Oo_{\U_\alpha}$.
+\item Let $p$ be prime. Consider map  $\bigsqcup_n \Spec(\Z/p^n)\to \Spec \Z$.
+\end{enumerate}
+\end{enumerate}
+\end{document}

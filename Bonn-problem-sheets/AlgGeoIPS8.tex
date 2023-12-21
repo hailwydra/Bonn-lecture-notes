@@ -1,0 +1,15 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{preamble}
+\title{Algebraic Geometry PS8}
+\author{Mathieu Wydra \& Jon Im}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item[4] \begin{enumerate}
+\item Let $U_1,U_2$ be open affine subschemes of $X$, say $U_1 \cong \Spec A$ and $U_2 \cong \Spec B$. Take $x\in U_1\cap U_2$. We can assume wlog that we have $f\in  \Spec A$, $g\in \Spec B$  such that $ x\in D_{U_1}(f)\subset D_{U_2}(g) \subset U_1\cap U_2$. Consider $F = f\vert_{D_{U_2}(g)}\in \Gamma(D_{U_2}(g),\Oo_X) = B_g$. So $F = h/g^n$ for some $b\in B$ and $n\geq 0$. 
+As $\Spec A_f = \Spec B_g\backslash V(F) = \Spec (B_g)_F$, then $\Spec (B_g)_F = \Spec (B_gh)$ so $D_{U_2}(gh) = D_{U_1}(f)$.
+
+\item Let $f:X\to S$ be a morphism of schemes such that for an open cover $\{\Spec A_i\}_i$ of $X$ and $\{\Spec B_i\}_i$ of $S$ with $f(\Spec B_i)\subset \Spec A_i $ with $A_i\to B_i$ being of finite presentation. Let affine opens be such that $f(\Spec B) \subset \Spec A$. Pick $p\in \Spec B$, and $p$ is contained in some $\Spec B_i$. By (a) we can choose an affine open neighbourhood of $U = \Spec C\subset \Spec B \cap \Spec B_i$ of $p$ such that it is principal open in both subschemes. Then $\Gamma(\Spec A_i,\Oo_S)\to \Gamma(\Spec C,\Oo_X)$ is of finite presentation as $\Spec C$ is principal open. Pick a neighbourhood $V = \Spec D \subset \Spec A_i \Spec A$ of $f(p)$ again such that $\Spec D$ is principal open in both subschemes. Then $f^{-1}(V)\cap U$ is a principal open in $\Spec B_i$ so then also in $\Spec B$ therefore $\Gamma(\Spec A,\Oo_S)\to \Gamma(\Spec B_i,\Oo_X)$ is of finite presentation. This can be done for all $p\in\Spec B$, and $\{\Spec B_i\}$ covers $\Spec B$. Since $\Spec B$ is quasi-compact, we can pick finitely many such affines to cover $\Spec B$. By gluing argument since $A_i\to B_i$ is of finite presentation, then so is $A_i\to B$ then via similar argument on $\Spec A$ we have that $A\to B$ is of finite presentation.
+\end{enumerate}
+\end{enumerate}
+\end{document}
